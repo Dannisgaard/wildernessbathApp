@@ -10,4 +10,9 @@ import { TemperatureSymbolsComponent } from "../../components/temperature-symbol
 })
 export class FrontpageComponent {
 
+    
+allTemps() {
+    throw new Error('Method not implemented.');
+}
+
 }
