@@ -1,1 +1,37 @@
-<p>log works!</p>
+<div id="pagelog">
+<div class="row">
+    <div class="col">
+        <div class="mt-2 mb-2 p-3 text-white text-center rounded" style="background-color: #a27567;">
+            <h1 class="display-3">Alle temperaturer</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table id="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col" data-field="id">Tidspunkt</th>
+                    <th scope="col" data-field="name">Temperatur</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (temperature of temperatures; track temperature.received_at; let i = $index) {
+                <tr>
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>
+                        {{temperature.received_at | dateTimeFormatPipe }}
+                    </td>
+                    <td>
+                        {{temperature.temp }}
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</div>
