@@ -17,9 +17,7 @@ import { dateTimeFormatPipe } from '../../shared/pipes/dateTimeFormatPipe';
 export class LogComponent {
   public temperatures: Temperature[] = [];
   
-  /**
-   *
-   */
+  
   constructor(
     private temperatureLogService: TemperatureLogService
   ) {
