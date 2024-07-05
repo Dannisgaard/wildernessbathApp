@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Temperature } from '../../shared/models/temperature';
 import { TemperatureLogService } from '../../shared/services/temperature-log-service';
 import { dateTimeFormatPipe } from '../../shared/pipes/dateTimeFormatPipe';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-log',
@@ -16,12 +18,13 @@ import { dateTimeFormatPipe } from '../../shared/pipes/dateTimeFormatPipe';
 })
 export class LogComponent {
   public temperatures: Temperature[] = [];
-  
-  
+
+
   constructor(
-    private temperatureLogService: TemperatureLogService
+    private temperatureLogService: TemperatureLogService,
+    private router: Router
   ) {
-    
+
   }
 
   ngOnInit() {
@@ -30,6 +33,10 @@ export class LogComponent {
         this.temperatures = currentObserverValue;
       }
     });
-    }
   }
+
+  gotoFrontpage() {
+    this.router.navigate(['/']);
+  }
+}
 

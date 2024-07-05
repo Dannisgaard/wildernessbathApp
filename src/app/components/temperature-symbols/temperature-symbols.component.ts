@@ -33,7 +33,9 @@ export class TemperatureSymbolsComponent {
         this.setArrow();
       }
     });
+    this.getTempTimer(new Date(new Date().getTime() + 2.5 * 60000));
   }
+
   setSymbols() {
     // start cold
     if (this.currentTemperature.temp <= this.optimumTemperature - (3 * this.symbolStepTemperature)) {
@@ -92,5 +94,21 @@ export class TemperatureSymbolsComponent {
         break;
       }
     }
+  }
+
+  getTempTimer(expires: Date) {
+    const now = new Date();
+    expires.setMinutes(expires.getMinutes() - now.getTimezoneOffset());
+    const diff = expires.getTime() - now.getTime();
+    setTimeout(() => {
+      this.temperatureTempService.getCurrentTemperature().subscribe({
+        next: (currentObserverValue) => {
+          this.currentTemperature = currentObserverValue;
+          this.setSymbols();
+          this.setArrow();
+          this.getTempTimer(new Date(expires.getTime() + 2.5 * 60000));
+        }
+      });
+    }, diff);
   }
 }
