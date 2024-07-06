@@ -10,5 +10,5 @@ RUN npm ci && npm run build
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.27
 EXPOSE 80
-COPY --from=wildernessbath-stage /app/dist/wildernessbath /usr/share/nginx/html
+COPY --from=wildernessbath-stage /app/dist/wildernessbath/browser /usr/share/nginx/html
 # COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
