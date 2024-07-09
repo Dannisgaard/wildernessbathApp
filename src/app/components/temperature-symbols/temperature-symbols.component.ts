@@ -17,8 +17,8 @@ export class TemperatureSymbolsComponent {
   protected currentSymbolClass3 = '';
   protected currentArrowClass = '';
   private currentTemperature: TemperatureCurrent = new TemperatureCurrent;
-  private optimumTemperature: number = 39;
-  private symbolStepTemperature = 1.5;
+  private optimumTemperature: number = 38;
+  private symbolStepTemperature = 1.25;
 
   constructor(
     private temperatureTempService: TemperatureTempService
@@ -38,17 +38,17 @@ export class TemperatureSymbolsComponent {
 
   setSymbols() {
     // start cold
-    if (this.currentTemperature.temp <= this.optimumTemperature - (3 * this.symbolStepTemperature)) {
+    if (this.currentTemperature.temp <= this.optimumTemperature - (2 * this.symbolStepTemperature)) {
       this.currentSymbolClass1 = 'pingvin';
       this.currentSymbolClass2 = 'pingvin';
       this.currentSymbolClass3 = 'pingvin';
     }
-    else if (this.currentTemperature.temp <= this.optimumTemperature - (2 * this.symbolStepTemperature)) {
+    else if (this.currentTemperature.temp <= this.optimumTemperature - (1 * this.symbolStepTemperature)) {
       this.currentSymbolClass1 = 'pingvin';
       this.currentSymbolClass2 = 'pingvin';
       this.currentSymbolClass3 = 'champagne';
     }
-    else if (this.currentTemperature.temp <= this.optimumTemperature - (1 * this.symbolStepTemperature)) {
+    else if (this.currentTemperature.temp <= this.optimumTemperature) {
       this.currentSymbolClass1 = 'pingvin';
       this.currentSymbolClass2 = 'champagne';
       this.currentSymbolClass3 = 'champagne';
