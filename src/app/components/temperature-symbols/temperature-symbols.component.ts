@@ -29,6 +29,12 @@ export class TemperatureSymbolsComponent {
     this.temperatureTempService.getCurrentTemperature().subscribe({
       next: (currentObserverValue) => {
         this.currentTemperature = currentObserverValue;
+        // this.currentTemperature = {
+        //   id: "1",
+        //   received_at: new Date(),
+        //   temp: 41.54578,
+        //   difference: -0.6
+        // }
         this.setSymbols();
         this.setArrow();
       }
@@ -76,7 +82,7 @@ export class TemperatureSymbolsComponent {
   }
 
   setArrow() {
-    switch (this.currentTemperature?.difference) {
+    switch (Math.round(this.currentTemperature?.difference)) {
       case 0: {
         this.currentArrowClass = 'arrowgreen';
         break;
